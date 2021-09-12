@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import React, { Component } from "react";
+import Navbar from "./components/Navbar";
+import NewsContainer from "./components/NewsContainer";
+import { BrowserRouter as Router, Switch} from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default class App extends Component {
+  render() {
+    return (
+      <div>
+        <Router>
+          <Navbar />
+          <Switch>
+            <Router exact path='/'>
+              <NewsContainer key="general"  category="general" />
+            </Router>
+            <Router exact path='/business'>
+              <NewsContainer key="business" category="business" />
+            </Router>
+            <Router exact path='/entertainment'>
+              <NewsContainer key="entertainment" category="entertainment" />
+            </Router>
+            <Router exact path='/health'>
+              <NewsContainer key="health" category="health" />
+            </Router>
+            <Router exact path='/science'>
+              <NewsContainer key="science" category="science" />
+            </Router>
+            <Router exact path='/sports'>
+              <NewsContainer key="sports" category="sports" />
+            </Router>
+            <Router exact path='/technology'>
+              <NewsContainer key="technology" category="technology" />
+            </Router>
+          </Switch>
+        </Router>
+      </div>
+    );
+  }
 }
-
-export default App;
